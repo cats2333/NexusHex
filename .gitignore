@@ -1,0 +1,10 @@
+# Unreal Engine 忽略规则
+/Binaries/
+/Intermediate/
+/Saved/
+/.vs/
+/.vsconfig
+*.sln
+DerivedDataCache/
+Build/
+*.code-workspace
