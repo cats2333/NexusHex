@@ -1,7 +1,5 @@
 #pragma once
 #include "CoreMinimal.h"
-#include "UObject/ObjectMacros.h"
-#include "UObject/UObjectGlobals.h"
 #include "MassEntityTypes.h"
 #include "HexMetrics.h"
 #include "HexComponents.generated.h"

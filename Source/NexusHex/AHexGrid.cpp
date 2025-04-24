@@ -12,7 +12,7 @@ AHexGrid::AHexGrid()
 
 void AHexGrid::BeginPlay()
 {
-    Super::BeginPlay();
+    //Super::BeginPlay();
     HexMetrics::Initialize();
     HexMetrics::NoiseSource = NoiseSource;
 
@@ -39,35 +39,35 @@ void AHexGrid::BeginPlay()
     }
 
     MassEntitySubsystem = GetWorld()->GetSubsystem<UMassEntitySubsystem>();
-    CreateChunks();
+    //CreateChunks();
     InitializeMassEntities();
-    Refresh();
+    //Refresh();
 }
 
-void AHexGrid::CreateChunks()
-{
-    if (!ChunkClass)
-    {
-        UE_LOG(LogTemp, Error, TEXT("ChunkClass is not set!"));
-        return;
-    }
-
-    Chunks.Empty();
-    Chunks.SetNum(ChunkCountX * ChunkCountZ);
-
-    for (int32 Z = 0, I = 0; Z < ChunkCountZ; Z++)
-    {
-        for (int32 X = 0; X < ChunkCountX; X++)
-        {
-            AHexGridChunk* Chunk = GetWorld()->SpawnActor<AHexGridChunk>(ChunkClass, FVector::ZeroVector, FRotator::ZeroRotator);
-            if (Chunk)
-            {
-                Chunk->SetActorTransform(GetActorTransform());
-                Chunks[I++] = Chunk;
-            }
-        }
-    }
-}
+//void AHexGrid::CreateChunks()
+//{
+//    if (!ChunkClass)
+//    {
+//        UE_LOG(LogTemp, Error, TEXT("ChunkClass is not set!"));
+//        return;
+//    }
+//
+//    Chunks.Empty();
+//    Chunks.SetNum(ChunkCountX * ChunkCountZ);
+//
+//    for (int32 Z = 0, I = 0; Z < ChunkCountZ; Z++)
+//    {
+//        for (int32 X = 0; X < ChunkCountX; X++)
+//        {
+//            AHexGridChunk* Chunk = GetWorld()->SpawnActor<AHexGridChunk>(ChunkClass, FVector::ZeroVector, FRotator::ZeroRotator);
+//            if (Chunk)
+//            {
+//                Chunk->SetActorTransform(GetActorTransform());
+//                Chunks[I++] = Chunk;
+//            }
+//        }
+//    }
+//}
 
 void AHexGrid::InitializeMassEntities()
 {
@@ -78,27 +78,27 @@ void AHexGrid::InitializeMassEntities()
     }
 }
 
-void AHexGrid::Refresh()
-{
-    for (AHexGridChunk* Chunk : Chunks)
-    {
-        if (Chunk)
-        {
-            Chunk->Refresh();
-        }
-    }
-}
+//void AHexGrid::Refresh()
+//{
+//    for (AHexGridChunk* Chunk : Chunks)
+//    {
+//        if (Chunk)
+//        {
+//            Chunk->Refresh();
+//        }
+//    }
+//}
 
-AHexCell* AHexGrid::GetCellByPosition(FVector Position)
-{
-    // Temporary: Convert to Mass entity query
-    FVector LocalPosition = GetActorTransform().InverseTransformPosition(Position);
-    FHexCoordinates Coords = FHexCoordinates::FromPosition(LocalPosition, GetHeight());
-    return GetCellByCoordinates(Coords);
-}
-
-AHexCell* AHexGrid::GetCellByCoordinates(FHexCoordinates Coords)
-{
-    // Temporary: For editor compatibility, return nullptr or adapt to fetch Mass entity data
-    return nullptr;
-}
+//AHexCell* AHexGrid::GetCellByPosition(FVector Position)
+//{
+//    // Temporary: Convert to Mass entity query
+//    FVector LocalPosition = GetActorTransform().InverseTransformPosition(Position);
+//    FHexCoordinates Coords = FHexCoordinates::FromPosition(LocalPosition, GetHeight());
+//    return GetCellByCoordinates(Coords);
+//}
+//
+//AHexCell* AHexGrid::GetCellByCoordinates(FHexCoordinates Coords)
+//{
+//    // Temporary: For editor compatibility, return nullptr or adapt to fetch Mass entity data
+//    return nullptr;
+//}

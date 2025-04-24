@@ -29,6 +29,10 @@ public:
     static constexpr float ElevationStep = 3.0f;
     static constexpr int32 TerraceSteps = 4;
 
+    // Chunk size constants
+    static constexpr int32 ChunkSizeX = 4; // Number of hex cells along X per chunk
+    static constexpr int32 ChunkSizeZ = 5; // Number of hex cells along Z per chunk
+
     static TArray<FVector> Corners;
     static TArray<FColor> NoiseData;
     static UTexture2D* NoiseSource;

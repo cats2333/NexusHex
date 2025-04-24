@@ -1,6 +1,8 @@
 #pragma once
 #include "CoreMinimal.h"
 #include "MassProcessor.h"
+#include "MassArchetypeTypes.h"
+#include "MassEntitySubsystem.h"
 #include "HexGridInitializationSystem.generated.h"
 
 UCLASS()
